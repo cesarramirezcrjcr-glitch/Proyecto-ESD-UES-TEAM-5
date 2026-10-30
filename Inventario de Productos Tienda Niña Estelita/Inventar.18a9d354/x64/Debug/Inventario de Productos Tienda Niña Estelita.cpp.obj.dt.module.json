@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "Inventar.18a9d354\\x64\\Debug\\Inventario de Productos Tienda Niña Estelita.obj",
+            "outputs": [
+                "Inventar.18a9d354\\x64\\Debug\\Inventario de Productos Tienda Niña Estelita.cpp.obj.dt.module.json",
+                "Inventar.18a9d354\\x64\\Debug\\Inventario de Productos Tienda Niña Estelita.cpp.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}
