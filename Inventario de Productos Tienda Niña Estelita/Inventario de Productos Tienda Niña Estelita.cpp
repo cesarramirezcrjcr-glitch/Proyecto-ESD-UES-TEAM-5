@@ -84,6 +84,54 @@ cout << "Codigo: " << p.codigo
 }
 }
 
+//Modificar Los Productos
+void modificarProducto() {
+  int codigo;
+cout << "Codigo del Producto> ";
+
+if (!(cin >> codigo)) {
+cout << "Codigo Invalido.\n";
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(), '\n');
+return;
+}
+
+auto it = buscarCodigo(codigo);
+
+if (it == inventario.end()) {
+cout << "Producto no Encontrado. \n";
+return;
+}
+
+cin.ignore(numeric_limits<streamsize>::max(), '\n');
+string nombre;
+cout << "Nuevo nombre: ";
+getline(cin, nombre);
+
+if (nombre, empty()) {
+cout << "Nombre invalido. \n";
+return;
+}
+
+int existencias;
+double precio;
+
+cout << "Nuevas existencias: ";
+if (!(cin >> existencias) || existencias < 0) {
+cout << "Existencias invalidas. \n";
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(), '\n');
+return;
+}
+
+cout << "Nuevo precio: ";
+if (!(cin >> precio) || precio < 0){
+cout << "Precio Invalido.\n";
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(), '\n');
+return;
+}
+
 
 
 
