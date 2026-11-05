@@ -132,6 +132,84 @@ cin.ignore(numeric_limits<streamsize>::max(), '\n');
 return;
 }
 
+it->nombre = nombre;
+it->existencias = existencias;
+it->precio = precio;
+
+cout << "Producto modificado correctamente.\n";
+}
+
+//Para Eliminar Producto
+void eliminarProducto() {
+  int codigo;
+cout << "Codigo del producto: ";
+
+if (!(cin >> codigo)) {
+cout << "Codigo Invalido.\n";
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(), '\n\);
+return;
+}
+
+auto it = buscarCodigo(codigo);
+
+if (it == inventario.end()) {
+cout << "Producto no encontrado.\n";
+return;
+}
+
+//Busqueda lineal Por Codigo
+void busquedaLineal() {
+  int codigo;
+cout << "Codigo a buscar: ";
+
+if (!(cin >> codigo)) {
+cout << "Codigo invalido.\n";
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(), '\n');
+return;
+}
+
+auto inicio = chrono::high_resolution_clock::now();
+
+auto it = buscarCodigo(codigo);
+
+auto fin = chrono::high_resolution_clock::now();
+
+auto tiempo = chrono::duration_cast<chrono::nanoseconds>(
+fin - inicio).count()
+
+if (it != inventario.end()) {
+cout << "Encontrado: " << it->nombre
+  << " | Precio: $" << it->precio << '\n';
+} else {
+cout << "Producto no encontrado.\n";
+}
+
+cout << "Tiempo de busqueda lineal: "
+  <<tiempo << "segundos\n";
+}
+
+//Busqueda binaria por codigo
+void busquedaBinaria() {
+  int codigo;
+cout << "Codigo a buscar: ";
+
+if (!(cin >> codigo)) {
+cout << "Codigo Invalid.\n";
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(), '\n';
+return;
+}
+
+vector<Producto> productos(
+inventario.begin(), inventario.end());
+
+sort(productos.begin(), productos.end(),
+  [](const Producto& a, const Producto& b) {
+return a.codigo < b.codigo;
+  });
+  
 
 
 
