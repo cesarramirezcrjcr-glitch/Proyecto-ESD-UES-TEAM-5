@@ -296,8 +296,7 @@ void eliminarProducto() {
 		int opcion = 0;
 
 		do {
-			cout << "\n ********** Tienda1
-        1Estelita **********\n";
+			cout << "\n ********** Tienda Estelita **********\n";
 			cout << "1. Registrar Producto\n";
 			cout << "2. Mostrar Inventario\n";
 			cout << "3. Modificar Producto\n";
