@@ -209,12 +209,117 @@ sort(productos.begin(), productos.end(),
   [](const Producto& a, const Producto& b) {
 return a.codigo < b.codigo;
   });
-  
 
+auto inicio = chrono::high_resolution_clock::now();
 
+int izquierda = 0;
+int derecha = static_cast<int>(productos.size()) -1;
+int posicion = -1;
 
+while (izquierda <= derecha) {
+int medio = izquierda + (derecha - izquierda) / 2;
 
+if (productos[medio].codigo == codigo) {
+posicion =  medio,
+  break;
+} else if (productos[medio].codigo < codigo){
+izquierda = medio + 1:
+  } else {
+derecha =  medio -1;
+}
+}
 
+auto fin =  chrono::high_resolution_clock::now();
+
+auto tiempo = chrono::duration_cast<chrono::nanoseconds>(
+fin - inicio).count();
+
+if (posicion != -1) {
+cout << "Encontrado: " << productos[posicion].nombre
+  << " | Precio: $" << productos[posicion].precio << '\n\;
+} else {
+cout << "Producto no encontrado. \n";
+}
+
+cout << "Tiempo de busqueda binaria: "
+  << tiempo << " nanosegundos\n";
+}
+
+//Busqueda por Nombre
+void buscarNombre() {
+  string nombre;
+
+cin.ignore(numeric_limits<streamsize>::max(), '\n';
+cout << "Nombre del producto: ";
+getline(cin, nombre);
+
+bool encontrado = false;
+for (const Producto& p : inventario) {
+if (p.nombre.find(nombre) != string::npos) {
+cout << "Codigo: " << p.codigo
+  << " | Nombre: " << p.nombre
+  << " | Precio: $" << p.precio
+  << " | Existencias: " << p.existencias << '\n';
+
+encontrado = true;
+}
+}
+
+if (!encontrado)
+  cout << "Producto no encontrado. \n";
+}
+
+//Ordenar por Precio
+void ordernarPorPrecio() {
+  inventario.sort([](const Producto& a, const Producto& b) {
+return a.precio < b.precio;
+  });
+
+  cout << "Inventario ordenado por precio. \n";
+  mostrarInventario();
+}
+
+int main () {
+  int opcion;
+
+do {
+cout << "\n ********** SISTEMA DE INVENTARIADO **********\n";
+cout << "1. Registrar Producto\n";
+cout << "2. Mostrar Inventario\n";
+cout << "3. Modificar Producto\n";
+cout << "4. Eliminar Producto\n";
+cout << "5. Buscar por Codigo (lineal)\n";
+cout << "6. Buscar por Codigo (binaria)\n";
+cout << "7. Buscar por Nombre\n";
+cout << "8. Ordenar por Precio\n";
+cout << "9. Salir\n";
+cout << "Seleccione una Opcion: ";
+
+if (!(cin >> opcion)) {
+cout << "Debe ingresar un numero.\n";
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(), '\n');
+continue;
+}
+
+Switch (opcion) {
+case 1: registrarProducto(); break;
+case 2: mostrarInventario(); break;
+case 3: modificarProducto(); break;
+case 4: eliminarProducto(); break;
+case 5: busquedaLineal(); break;
+case 6: busquedaBinaria(); break;
+case 7: buscarNombre(); break;
+case 8: ordenarPorPrecio(); break;
+case 9: cout << "Programa Finalizado.\n"; break;
+default: cout << "Opcion no valida.\n";
+}
+
+} while (opcion !=9);
+
+returno 0;
+
+}
 
 
 
